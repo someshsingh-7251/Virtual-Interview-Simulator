@@ -1,5 +1,21 @@
 let type = localStorage.getItem("type");
-let questionList = questions[type];
+let originalQuestions = questions[type];
+
+// Shuffle function (Fisher–Yates Algorithm)
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Copy + shuffle questions
+let questionList = [...originalQuestions];
+shuffle(questionList);
+
+// Select only first 5 random questions
+questionList = questionList.slice(0, 5);
+
 let index = 0;
 let score = 0;
 let time = 60;
@@ -27,7 +43,8 @@ function startTimer() {
 function nextQuestion() {
     clearInterval(timer);
 
-    if (answerEl.value.length > 20) {
+    // Simple evaluation logic
+    if (answerEl.value.trim().length >= 20) {
         score += 10;
     }
 
