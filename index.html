@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Virtual Interview Simulator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Virtual Interview Simulator</h1>
+    <p>Select Interview Type</p>
+
+    <select id="interviewType">
+        <option value="hr">HR Interview</option>
+        <option value="technical">Technical Interview</option>
+        <option value="behavioral">Behavioral Interview</option>
+    </select>
+
+    <button onclick="startInterview()">Start Interview</button>
+</div>
+
+<script>
+function startInterview() {
+    const type = document.getElementById("interviewType").value;
+    localStorage.setItem("type", type);
+    window.location.href = "interview.html";
+}
+</script>
+
+</body>
+</html>
